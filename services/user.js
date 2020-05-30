@@ -20,3 +20,12 @@ exports.getUsers = () => {
     .catch(err => reject(err))
   })
 }
+
+exports.getUserByQuery = (searchQuery) => {
+  return new Promise((resolve, reject) => {
+    userModel
+    .findOne(searchQuery)
+    .then(result => resolve(result))
+    .catch(err => reject(err))
+  })
+}
