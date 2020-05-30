@@ -11,3 +11,12 @@ exports.createUser = (fullname, email, password) => {
     .catch(err => reject(err))
   })
 }
+
+exports.getUsers = () => {
+  return new Promise((resolve, reject) => {
+    userModel
+    .find()
+    .then(result => resolve(result))
+    .catch(err => reject(err))
+  })
+}

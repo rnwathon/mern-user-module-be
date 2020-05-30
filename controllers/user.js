@@ -23,3 +23,25 @@ exports.createUser = (req, res, next) => {
     })
   })
 }
+
+exports.getUsers = (req, res, next) => {
+  userServices.getUsers()
+  .then(result => {
+    res
+    .status(200)
+    .json({
+      success: true,
+      message: "Get users success!",
+      result
+    })
+  })
+  .catch(err => {
+    res
+    .status(err.statusCode || 500)
+    .json({
+      success: false,
+      message: err.message,
+      result: null
+    })
+  })
+}
