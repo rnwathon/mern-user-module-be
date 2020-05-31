@@ -38,3 +38,12 @@ exports.updateUser = (id, fullname) => {
     .catch(err => reject(err))
   })
 }
+
+exports.deleteUser = (id) => {
+  return new Promise((resolve, reject) => {
+    userModel
+    .findOneAndDelete({_id: id})
+    .then(result => resolve(result))
+    .catch(err => reject(err))
+  })
+}

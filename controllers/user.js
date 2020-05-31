@@ -50,6 +50,30 @@ exports.updateUser = (req, res, next) => {
   })
 }
 
+exports.deleteUser = (req, res, next) => {
+  const { id } = req.body;
+
+  userServices.deleteUser(id)
+  .then(result => {
+    res
+    .status(200)
+    .json({
+      success: true,
+      message: "User deleted!",
+      result: result
+    })
+  })
+  .catch(err => {
+    res
+    .status(err.statusCode || 500)
+    .json({
+      success: false,
+      message: err.message,
+      result: null
+    })
+  })
+}
+
 exports.getUsers = (req, res, next) => {
   userServices.getUsers()
   .then(result => {
