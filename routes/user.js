@@ -6,6 +6,7 @@ const jwtAuth = require("../middlewares/jwtAuth")
 // Get Users
 router.get('/', jwtAuth, userController.getUsers)
 router.post('/', jwtAuth, userController.createUser)
+router.put('/', jwtAuth, userController.updateUser)
 router.post('/login', userController.loginUser)
 
 module.exports = router;

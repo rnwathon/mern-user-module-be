@@ -29,3 +29,12 @@ exports.getUserByQuery = (searchQuery) => {
     .catch(err => reject(err))
   })
 }
+
+exports.updateUser = (id, fullname) => {
+  return new Promise((resolve, reject) => {
+    userModel
+    .findOneAndUpdate({ _id: id}, {fullname: fullname})
+    .then(result => resolve(result))
+    .catch(err => reject(err))
+  })
+}

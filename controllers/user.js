@@ -25,6 +25,31 @@ exports.createUser = (req, res, next) => {
   })
 }
 
+exports.updateUser = (req, res, next) => {
+  const { _id } = req.decoded;
+  const { fullname } = req.body;
+
+  userServices.updateUser(_id, fullname)
+  .then(result => {
+    res
+    .status(200)
+    .json({
+      success: true,
+      message: "User updated!",
+      result: result
+    })
+  })
+  .catch(err => {
+    res
+    .status(err.statusCode || 500)
+    .json({
+      success: false,
+      message: err.message,
+      result: null
+    })
+  })
+}
+
 exports.getUsers = (req, res, next) => {
   userServices.getUsers()
   .then(result => {
