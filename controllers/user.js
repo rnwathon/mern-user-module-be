@@ -1,6 +1,30 @@
 const userServices = require("../services/user")
 const jwtSignPayload = require('../helpers/jwtSignPayload')
 
+exports.getUserById = (req, res, next) => {
+  const { id } = req.body;
+
+  userServices.getUserByQuery({ _id: id })
+  .then(result => {
+    res
+    .status(200)
+    .json({
+      success: true,
+      message: "Get user detail succeed",
+      result
+    })
+  })
+  .catch(err => {
+    res
+    .status(err.statusCode || 500)
+    .json({
+      success: false,
+      message: err.message,
+      result: null
+    })
+  })
+}
+
 exports.createUser = (req, res, next) => {
   const { fullname, email, password } = req.body;
 

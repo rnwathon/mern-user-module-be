@@ -8,6 +8,7 @@ router.get('/', jwtAuth, userController.getUsers)
 router.post('/', jwtAuth, userController.createUser)
 router.put('/', jwtAuth, userController.updateUser)
 router.delete('/', jwtAuth, userController.deleteUser)
+router.post('/detail', jwtAuth, userController.getUserById)
 router.post('/login', userController.loginUser)
 
 module.exports = router;
