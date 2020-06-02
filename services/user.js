@@ -1,11 +1,12 @@
 const userModel = require("../models/user")
 
-exports.createUser = (fullname, email, password) => {
+exports.createUser = (fullname, email, password, imagePath) => {
   return new Promise((resolve, reject) => {
     userModel.create({
       fullname,
       email,
-      password
+      password,
+      imagePath
     })
     .then(result => resolve(result))
     .catch(err => reject(err))

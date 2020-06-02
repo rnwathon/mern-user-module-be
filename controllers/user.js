@@ -27,8 +27,9 @@ exports.getUserById = (req, res, next) => {
 
 exports.createUser = (req, res, next) => {
   const { fullname, email, password } = req.body;
+  const { path: imagePath } = req.file;
 
-  userServices.createUser(fullname, email, password)
+  userServices.createUser(fullname, email, password, imagePath)
   .then(result => {
     res
     .status(200)
