@@ -50,10 +50,9 @@ exports.createUser = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-  const { _id } = req.decoded;
-  const { fullname } = req.body;
+  const { id, fullname } = req.body;
 
-  userServices.updateUser(_id, fullname)
+  userServices.updateUser(id, fullname)
   .then(result => {
     res
     .status(200)
